@@ -2,7 +2,7 @@ import { load } from "https://deno.land/std@0.198.0/dotenv/mod.ts";
 import { existsSync } from "https://deno.land/std@0.217.0/fs/exists.ts";
 import { downloadFile } from "./download-file.ts";
 import { MeilisearchClient } from "./meilisearch-client.ts";
-import { processLargeJsonFile } from "./process-large-json-file.ts";
+import { processMTGJsonFile } from "./process-mtg-json-file.ts";
 import { xzDecompress } from "./xz-decompress.ts";
 
 const compressedFile = "data/AllPrintings.json.xz";
@@ -30,4 +30,4 @@ console.log(health);
 const indexes = await client.getIndexes()
 console.log(indexes);
 
-await processLargeJsonFile(jsonFile);
+await processMTGJsonFile(jsonFile);

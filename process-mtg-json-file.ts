@@ -3,7 +3,7 @@ import { JsonStrum } from "npm:@xtao-org/jsonstrum@0.3.0";
 import { MeilisearchClient } from "./meilisearch-client.ts";
 import { Set as DataCardSet } from "./mtg/set.type.ts";
 
-export async function processLargeJsonFile(filePath: string) {
+export async function processMTGJsonFile(filePath: string, ) {
   const meilisearch = MeilisearchClient.getInstance().client;
 
   if (!(await meilisearch.getIndexes()).results.some((s) => s.uid === "mtg")) {
