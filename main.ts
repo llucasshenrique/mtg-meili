@@ -13,7 +13,6 @@ if (!existsSync(compressedFile)) downloadFile(downloadUrl, compressedFile);
 if (!existsSync(jsonFile)) xzDecompress(compressedFile);
 
 const env = await load();
-console.log(env);
 
 if (!("MEILI_HOST" in env && "MEILI_MASTER_KEY" in env)) {
   throw new Error("check environment file");
