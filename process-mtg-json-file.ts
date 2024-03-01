@@ -28,20 +28,13 @@ export async function processMTGJsonFile(filePath: string, ) {
     await mtgIndex.updateDocumentsInBatches(set.cards, 100, { primaryKey: "uuid" })
   };
 
-  const arrayHandler = (array: unknown[]) => {
-    //Do something with the arrays that are ready.
-    // array.forEach((item) => console.log(item));
-  };
-
-  //Set up JsonStrum and add your object and array handlers
+  //Set up JsonStrum and add your object handlers
   const jsonStrum = JsonStrum({
     object: objectHandler,
-    array: arrayHandler,
     level: 2,
   });
 
   for await (const chunk of decodedStream) {
-    // console.log({ chunk: JSON.stringify(chunk) });
     jsonStrum.chunk(chunk);
   }
 
