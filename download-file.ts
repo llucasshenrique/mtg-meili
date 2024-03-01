@@ -9,15 +9,15 @@ export async function downloadFile(source: string, destinationPath: string) {
   const resp = await fetch(source);
   if (!resp.ok) {
     throw new Deno.errors.BadResource(
-      `Request failed with status ${resp.status}`
+      `Request failed with status ${resp.status}`,
     );
   } else if (!resp.body) {
     throw new Deno.errors.UnexpectedEof(
-      `The download url ${source} doesn't contain a file to download`
+      `The download url ${source} doesn't contain a file to download`,
     );
   } else if (resp.status === 404) {
     throw new Deno.errors.NotFound(
-      `The requested url "${source}" could not be found`
+      `The requested url "${source}" could not be found`,
     );
   }
 

@@ -3,7 +3,7 @@ import { JsonStrum } from "npm:@xtao-org/jsonstrum@0.3.0";
 import { MeilisearchClient } from "./meilisearch-client.ts";
 import { Set as DataCardSet } from "./mtg/set.type.ts";
 
-export async function processMTGJsonFile(filePath: string, ) {
+export async function processMTGJsonFile(filePath: string) {
   const meilisearch = MeilisearchClient.getInstance().client;
 
   if (!(await meilisearch.getIndexes()).results.some((s) => s.uid === "mtg")) {
@@ -25,7 +25,9 @@ export async function processMTGJsonFile(filePath: string, ) {
   const objectHandler = async (set: DataCardSet) => {
     //Do something with the objects that are ready.
     console.log(`Indexing set: ${set.name} with ${set.cards.length + 1} cards`);
-    await mtgIndex.updateDocumentsInBatches(set.cards, 100, { primaryKey: "uuid" })
+    await mtgIndex.updateDocumentsInBatches(set.cards, 100, {
+      primaryKey: "uuid",
+    });
   };
 
   //Set up JsonStrum and add your object handlers

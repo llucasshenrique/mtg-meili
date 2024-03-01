@@ -15,19 +15,19 @@ if (!existsSync(jsonFile)) xzDecompress(compressedFile);
 const env = await load();
 console.log(env);
 
-if(!( 'MEILI_HOST' in env && 'MEILI_MASTER_KEY' in env )) {
-  throw new Error('check environment file')
+if (!("MEILI_HOST" in env && "MEILI_MASTER_KEY" in env)) {
+  throw new Error("check environment file");
 }
 
 const client = MeilisearchClient.getInstance({
   host: env["MEILI_HOST"],
   apiKey: env["MEILI_MASTER_KEY"],
-}).client
+}).client;
 
 const health = await client.health();
 console.log(health);
 
-const indexes = await client.getIndexes()
+const indexes = await client.getIndexes();
 console.log(indexes);
 
 await processMTGJsonFile(jsonFile);

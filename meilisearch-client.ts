@@ -1,6 +1,5 @@
 import { MeiliSearch } from "https://esm.sh/meilisearch@0.37.0";
 
-
 type MeilisearchClientOptions = {
   host: string;
   apiKey: string;
